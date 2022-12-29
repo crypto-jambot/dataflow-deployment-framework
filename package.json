@@ -1,0 +1,22 @@
+{
+  "name": "@crypto-jambot/dataflow-deployment-framework",
+  "version": "1.0.0-0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "build": "tsc -p tsconfig.build.json && npm run movePackageJson",
+    "dev": "nodemon src/server.ts",
+    "patch": "npm version patch --git-tag-version",
+    "movePackageJson": "cp package.json dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "@crypto-jambot/dataflow-utils": "^1.0.0"
+  }
+}
