@@ -20,8 +20,10 @@ export async function deploy(event: Event, context?: Context) {
     attributes;
   const utils = new DataflowUtils({ dataflowName, bucketName, artifactId });
   try {
-    const response = await utils.deploy();
-    console.log(`Dataflow response: ${response}`);
+    const [response] = await utils.deploy();
+    Object.entries(response).forEach((key, value) => {
+      console.log(`${key}: ${value}`);
+    });
   } catch (err) {
     console.error(err);
   }
