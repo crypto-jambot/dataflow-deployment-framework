@@ -58,7 +58,7 @@ jobs:
         with:
           name: ${{ secrets.FUNCTION_NAME_PUBSUB }}
           runtime: nodejs16
-          entry_point: ${{ secrets.PUB_SUB_ENTRY_NAME }}
+          entry_point: ${{ secrets.PUBSUB_ENTRY_NAME }}
           source_dir: dist/
           service_account_email: ${{ secrets.SERVICE_ACCOUNT }}
           max_instances: 1
