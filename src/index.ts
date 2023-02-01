@@ -34,9 +34,8 @@ export async function deployPubsub(event: Event, context?: Context) {
 
 export async function deployHttp(req: Request, res: Response) {
     if (req.method != "POST") res.status(400).send("Must be a POST request.");
-    console.log(JSON.stringify(req));
     const { body } = <{ body: Params }>req;
-    console.log(body);
+    console.log(JSON.stringify(body));
     if (!body || !body.artifactId || !body.bucketName || !body.dataflowName)
         res.status(400).send(
             "Invalid payload. Must provide an artifactId, bucketName, and dataflowName."
