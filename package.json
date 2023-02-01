@@ -17,6 +17,7 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
-    "@crypto-jambot/dataflow-utils": "^1.0.2"
+    "@crypto-jambot/dataflow-utils": "^1.0.2",
+    "@google-cloud/functions-framework": "^3.1.3"
   }
 }

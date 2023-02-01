@@ -56,12 +56,22 @@ jobs:
       - name: Deploy Cloud Function
         uses: google-github-actions/deploy-cloud-functions@v1
         with:
-          name: ${{ secrets.FUNCTION_NAME }}
+          name: ${{ secrets.FUNCTION_NAME_PUBSUB }}
           runtime: nodejs16
-          entry_point: deploy
+          entry_point: ${{ secrets.PUBSUB_ENTRY_NAME }}
           source_dir: dist/
           service_account_email: ${{ secrets.SERVICE_ACCOUNT }}
           max_instances: 1
           event_trigger_type: google.pubsub.topic.publish
           event_trigger_service: pubsub.googleapis.com
           event_trigger_resource: ${{ secrets.TOPIC_NAME }}
+      - name: Deploy Cloud Function
+        uses: google-github-actions/deploy-cloud-functions@v1
+        with:
+          name: ${{ secrets.FUNCTION_NAME_HTTP }}
+          runtime: nodejs16
+          entry_point: ${{ secrets.HTTP_ENTRY_NAME }}
+          source_dir: dist/
+          service_account_email: ${{ secrets.SERVICE_ACCOUNT }}
+          max_instances: 1
+          ingress_settings: ALLOW_INTERNAL_ONLY
