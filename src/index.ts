@@ -36,6 +36,9 @@ export async function deployHttp(req: Request, res: Response) {
     if (req.method != "POST") res.status(400).send("Must be a POST request.");
     const { body } = <{ body: Params }>req;
     console.log(JSON.stringify(body));
+    console.log("ArtifactId: " + body.artifactId);
+    console.log("BucketName: " + body.bucketName);
+    console.log("DataflowName: " + body.dataflowName);
     if (!body || !body.artifactId || !body.bucketName || !body.dataflowName)
         res.status(400).send(
             "Invalid payload. Must provide an artifactId, bucketName, and dataflowName."
