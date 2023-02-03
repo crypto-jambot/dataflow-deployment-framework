@@ -39,6 +39,7 @@ export async function deployHttp(req: Request, res: Response) {
         res.status(400).send(
             "Invalid payload. Must provide an artifactId, bucketName, and dataflowName."
         );
+    return;
     try {
         const result = await deploy(body);
         res.status(200).send(result);
