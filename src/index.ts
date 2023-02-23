@@ -8,6 +8,7 @@ type Params = ExtraParams & {
     dataflowName: string;
     artifactId: string;
     bucketName: string;
+    version?: string;
 };
 type Event = {
     data: string;
@@ -53,7 +54,7 @@ export async function deployHttp(req: Request, res: Response) {
 }
 
 async function deploy(data: Params) {
-    const { dataflowName, bucketName, artifactId }: DataflowUtilOptions = data;
+    const { dataflowName, bucketName, artifactId, version } = data;
     const utils = new DataflowUtils({ dataflowName, bucketName, artifactId });
-    return (await utils.deploy())[0];
+    return (await utils.deploy(version))[0];
 }
